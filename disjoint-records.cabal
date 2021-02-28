@@ -1,0 +1,25 @@
+cabal-version: 2.4
+name: disjoint-records
+version: 0.0.0.0
+
+common commons
+  default-language: Haskell2010
+
+  build-depends: base, base-unicode-symbols , containers,
+    containers-unicode-symbols , pretty-show , data-fix , ghc-prim ,
+    generic-data, sop-core, red-black-record, tagged
+
+  default-extensions: UnicodeSyntax BlockArguments TupleSections
+     TypeApplications PartialTypeSignatures PatternSynonyms LiberalTypeSynonyms
+     StandaloneDeriving DeriveFunctor DeriveFoldable DeriveTraversable
+     FlexibleInstances FlexibleContexts MultiParamTypeClasses
+     FunctionalDependencies UndecidableInstances RankNTypes DataKinds PolyKinds
+     GADTs ConstraintKinds KindSignatures TypeOperators TypeFamilies
+     TypeFamilyDependencies DeriveFunctor DeriveFoldable DeriveTraversable
+     DeriveGeneric StandaloneKindSignatures AllowAmbiguousTypes
+
+  ghc-options: -Wpartial-type-signatures -fdefer-typed-holes
+
+library
+  import: commons
+  exposed-modules: X
