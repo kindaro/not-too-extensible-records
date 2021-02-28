@@ -24,10 +24,10 @@ data Map' symbol = E'
 
 -- | We use typing to compute value types from labels. This is otherwise the
 -- same as `Data.RBR.Map`.
-data Record' sort (t :: Map' Symbol)  where
-    Empty' :: Record' sort E'
-    Node'  :: Record' sort left -> Typing sort k -> Record' sort right -> Record' sort (N' color left k right)
+data Record' f sort (t :: Map' Symbol)  where
+    Empty' :: Record' f sort E'
+    Node'  :: Record' f sort left -> f (Typing sort k) -> Record' f sort right -> Record' f sort (N' color left k right)
 
 -- | An example.
-recordOfCuties ∷ Record' Cutie (N' R E' "catling" (N' R E' "whelp" E'))
-recordOfCuties = Node' Empty' 1 (Node' Empty' "woof" Empty')
+recordOfCuties ∷ Record' I Cutie (N' R E' "catling" (N' R E' "whelp" E'))
+recordOfCuties = Node' Empty' (I 1) (Node' Empty' (I "woof") Empty')
